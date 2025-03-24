@@ -1,0 +1,11 @@
+Summary Report
+
+Mean:
+Units Sold    32.857143
+
+Median:
+Units Sold    35.0
+
+Standard Deviation:
+Units Sold    9.346798
+
