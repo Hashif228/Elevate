@@ -6,7 +6,7 @@ file_path = "https://raw.githubusercontent.com/KeithGalli/complete-pandas-tutori
 df = pd.read_csv(file_path)  
 print(df.describe())
 print("First 5 rows of the dataset:")
-print(df.head())
+print(df.head(3))
 
 df = df.dropna() 
 df = df.select_dtypes(include=['number']) 
