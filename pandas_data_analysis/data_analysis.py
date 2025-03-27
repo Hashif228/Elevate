@@ -1,44 +1,68 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+def sum_of_evens(nums):
+    total=sum(num for num in nums if num % 2 == 0)
 
-file_path = "https://raw.githubusercontent.com/KeithGalli/complete-pandas-tutorial/refs/heads/master/warmup-data/coffee.csv" 
-df = pd.read_csv(file_path)  
-print(df.describe())
-print(df.head(3))
+    return total
 
-df = df.dropna() 
-df = df.select_dtypes(include=['number']) 
+nums = [1, 2, 3, 4, 5, 6]
+print(sum_of_evens(nums))  
 
-print("\nDescriptive Statistics:")
-print(df.describe()) 
+############################palind  and reverse
+def is_palindrome(s):
+    ss =s[::-1]
+    return ss
 
-plt.figure(figsize=(12, 6))
+print(is_palindrome("hashif"))  
 
-sns.histplot(df, kde=True)
-plt.title("Histogram of Numeric Data")
-plt.show()
+################################prime
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            print('l')
+            return False  
+    else:
+        print('k')
+        return True 
 
-if 'category_column' in df.columns:  
-    plt.figure(figsize=(8, 4))
-    sns.countplot(data=df, x='category_column')
-    plt.title("Category Distribution")
-    plt.xticks(rotation=45)
-    plt.show()
-with open("summary_report.txt", "w") as f:
-    f.write("Summary Report\n\n")
+print(is_prime(9))  
 
-    mean = df.mean().rename("Mean")
-    median = df.median().rename("Median")
-    std = df.std().rename("Std")
+#############bubble
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+print(bubble_sort([64, 34, 25, 12, 22, 11, 90]))
 
-    f.write("Mean:\n")
-    f.write(mean.to_string() + "\n\n")
+##linked
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
-    f.write("Median:\n")
-    f.write(median.to_string() + "\n\n")
+def reverse_linked_list(head):
+    prev = None
+    curr = head
+    while curr:
+        next_node = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next_node
+    return prev
 
-    f.write("Standard Deviation:\n")
-    f.write(std.to_string() + "\n\n")
+def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
 
-print("\nSummary report saved as 'summary_report.txt'.")
+print(fibonacci(6))  # Output: 8
+
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    return n * factorial(n - 1)
+
+print(factorial(5))  # Output: 120
