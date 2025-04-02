@@ -14,15 +14,15 @@ def scrape_mobiles(mobile_url):
     # print(d.prettify())
     for item in mobile_soup.select('.yKfJKb'): 
         if item.select_one('.KzDlHZ'):
-            name = item.select_one('.KzDlHZ').text.strip()
+            name = item.select_one('.KzDlHZ').text
         else:
             'N/A'
         if item.select_one('.Nx9bqj'):
-            offer_price = item.select_one('.Nx9bqj').text.strip() 
+            offer_price = item.select_one('.Nx9bqj').text
         else: 
             'N/A'
         if item.select_one('.yRaY8j '):
-             price= item.select_one('.yRaY8j ').text.strip()  
+             price= item.select_one('.yRaY8j ').text  
         else:
             'N/A'
         mobiles.append([name, price,offer_price])
@@ -63,13 +63,13 @@ def scrape_watches(watches_url):
 
 def save_to_csv_mobiles(mobiles, filename="details/mobiles.csv"):
     with open(filename, 'w', newline='', encoding='utf-8') as file:
-        writer = csv.writer(file)
+        writer = csv.writer(file, quoting=csv.QUOTE_NONE, escapechar=' ')
         writer.writerow(["Product Name", "Price","Offer price"])
         writer.writerows(mobiles)
 
 def save_to_csv_watches(watches, filename="details/watches.csv"):
     with open(filename, 'w', newline='', encoding='utf-8') as file:
-        writer = csv.writer(file)
+        writer = csv.writer(file, quoting=csv.QUOTE_NONE, escapechar=' ')
         writer.writerow(["Product Name", "Price","Offer price"])
         writer.writerows(watches)
 
