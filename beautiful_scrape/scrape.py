@@ -18,10 +18,14 @@ def scrape_mobiles(mobile_url):
         else:
             'N/A'
         if item.select_one('.Nx9bqj'):
-            price = item.select_one('.Nx9bqj').text.strip() 
+            offer_price = item.select_one('.Nx9bqj').text.strip() 
         else: 
             'N/A'
-        mobiles.append([name, price])
+        if item.select_one('.yRaY8j '):
+             price= item.select_one('.yRaY8j ').text.strip()  
+        else:
+            'N/A'
+        mobiles.append([name, price,offer_price])
     
     return mobiles
 
@@ -44,10 +48,16 @@ def scrape_watches(watches_url):
         else:
             'N/A'
         if item.select_one('.Nx9bqj'):
-            price = item.select_one('.Nx9bqj').text.strip() 
+            Offer_price = item.select_one('.Nx9bqj').text.strip() 
         else: 
             'N/A'
-        watches.append([name, price])
+        if item.select_one('.yRaY8j'):
+            price = item.select_one('.yRaY8j').text.strip() 
+        else: 
+            'N/A'
+
+
+        watches.append([name, price,Offer_price])
     
     return watches
     
@@ -56,13 +66,13 @@ def scrape_watches(watches_url):
 def save_to_csv_mobiles(mobiles, filename="details/mobiles.csv"):
     with open(filename, 'w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
-        writer.writerow(["Product Name", "Price"])
+        writer.writerow(["Product Name", "Price","Offer price"])
         writer.writerows(mobiles)
 
 def save_to_csv_watches(watches, filename="details/watches.csv"):
     with open(filename, 'w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
-        writer.writerow(["Product Name", "Price"])
+        writer.writerow(["Product Name", "Price","Offer price"])
         writer.writerows(watches)
 
 
