@@ -3,10 +3,9 @@ from bs4 import BeautifulSoup
 import csv
 
 def scrape_mobiles(mobile_url):
-    headers = {'User-Agent': 'Mozilla/5.0'}
-    mobile_response = requests.get(mobile_url, headers=headers)
+    mobile_response = requests.get(mobile_url, headers={'User-Agent': 'Mozilla/5.0'})
     if mobile_response.status_code != 200:
-        print("Failed to retrieve the webpage.")
+        print("Wepage is not getting....")
         return []
     
     mobile_soup = BeautifulSoup(mobile_response.text, 'html.parser')
