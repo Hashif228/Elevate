@@ -10,11 +10,11 @@ def scrape_mobiles(mobile_url):
     
     mobile_soup = BeautifulSoup(mobile_response.text, 'html.parser')
     mobiles = []
-    d=mobile_soup
-    print(d.prettify())
+    # d=mobile_soup
+    # print(d.prettify())
     for item in mobile_soup.select('.yKfJKb'): 
         if item.select_one('.KzDlHZ'):
-            name = item.select_one('.KzDlHZ').text.strip()  
+            name = item.select_one('.KzDlHZ').text.strip()
         else:
             'N/A'
         if item.select_one('.Nx9bqj'):
@@ -26,7 +26,6 @@ def scrape_mobiles(mobile_url):
         else:
             'N/A'
         mobiles.append([name, price,offer_price])
-    
     return mobiles
 
 
@@ -40,11 +39,10 @@ def scrape_watches(watches_url):
     
     watches_soup = BeautifulSoup(watches_response.text, 'html.parser')
     watches = []
-    d=watches_soup
-    print(d.prettify())
+
     for item in watches_soup.select('.hCKiGj'): 
         if item.select_one('.WKTcLC'):
-            name = item.select_one('.WKTcLC').text.strip()  
+            name = item.select_one('.WKTcLC').text.strip()
         else:
             'N/A'
         if item.select_one('.Nx9bqj'):
@@ -58,7 +56,7 @@ def scrape_watches(watches_url):
 
 
         watches.append([name, price,Offer_price])
-    
+        
     return watches
     
 
@@ -81,7 +79,6 @@ def main():
     mobiles = scrape_mobiles(mobile_url)
     watches_url="https://www.flipkart.com/search?q=watches&otracker=search&otracker1=search&marketplace=FLIPKART&as-show="
     watches=scrape_watches(watches_url)
-
     if mobiles:
         save_to_csv_mobiles(mobiles)
         
@@ -96,7 +93,6 @@ def main():
         
         print(f"Data saved to watches.csv successfully.")
     else:
-        print("No mobiles found.")
+        print("No watches found.")
 
-if __name__ == "__main__":
-    main()
+main()
