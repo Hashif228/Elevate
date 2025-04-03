@@ -10,7 +10,7 @@ class URL(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     full_url = db.Column(db.String(500), nullable=False)
     short_code = db.Column(db.String(20), unique=True, nullable=False)
-
+    clicks = db.Column(db.Integer, default=0)
 
 
 
@@ -33,14 +33,17 @@ def redirect_to_url(short_code):
     url_entry = URL.query.filter_by(short_code=short_code).first()
     print(short_code)
     if url_entry:
+
+        url_entry.clicks = url_entry.clicks + 1  
+        db.session.commit()
         return redirect(url_entry.full_url)
     return "URL Not Found!", 404
 
 
-@app.route('/links')
+@app.route('/analytics')
 def links():
     urls=URL.query.all()
-    return render_template('all_links.html',urls=urls)
+    return render_template('all_links_analytics.html',urls=urls)
 
 if __name__ == '__main__':
     
