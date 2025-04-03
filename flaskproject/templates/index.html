@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+       <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+
+    <div class="container">
+        <div class="card p-4">
+            <h3 class="text-center">URL Shortener</h3>
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="full_url" class="form-label">Enter the url:</label>
+                    <input type="url" class="form-control" id="full_url" name="full_url" required placeholder="eg:https://youtube.com">
+                </div>
+                <button type="submit" class="btn btn-primary btn-shorten">Shorten URL</button>
+            </form>
+<div style="margin: auto;"><button style="background-color: rgb(210, 218, 218);"><a href="links" style="text-decoration: none;color: black;">View all shortened links</a></button></div>
+            {% if short_code %}
+                <div class="short-url">
+                    <p>Shortened URL:</p>
+                    <a href="{{ short_code }}" target="_blank">{{ request.host_url }}{{ short_code }}</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>

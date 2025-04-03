@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links</title>
+</head>
+<body>
+
+<div style="display: flex;gap: 20px;text-align: center;margin: auto;background-color: rgb(7, 20, 20);color: azure;">
+    <div style="width: 50%;padding-bottom: 25px;padding-top: 25px;">URL
+        <div>----------</div>
+        {% for url in urls %}
+        <div style="padding-top: 25px;">{{url.full_url}}</div>
+        {% endfor %}
+
+    </div>
+    <div style="width: 50%;padding-top: 25px;">Shortened URL
+        <div>----------</div>
+        {% for url in urls %}
+
+        <div style="padding-top: 25px;">{{request.host}}/{{url.short_code}}</div>
+        {% endfor %}
+
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
