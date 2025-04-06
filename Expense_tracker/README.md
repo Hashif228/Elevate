@@ -16,10 +16,10 @@
         User login
 
 **Setup**
-        git clone https://github.com/Hashifs228/expense.git
-        cd expense
-        pip install -r requirements.txt
+        'git clone https://github.com/Hashif228/Elevate/tree/main/Expense_tracker'
+        'pip install -r requirements.txt'
         'python expense.py' in terminal
+        Follow the instructions seeing in terminal
 
 
 
